@@ -2,9 +2,18 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Events\Example;
+use App\Models\User;
+use App\Models\Message;
+use App\Events\Chat\ExampleTwo;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/broadcast', function () {
+    broadcast(new Example(User::find(1), Message::find(1)));
+//    broadcast(new ExampleTwo());
 });
 
 Route::get('/dashboard', function () {
