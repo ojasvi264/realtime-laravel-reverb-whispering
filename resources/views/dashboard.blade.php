@@ -11,11 +11,14 @@
                 <div
                     class="p-6 text-gray-900 dark:text-gray-100"
                     x-init="
-                    Echo.channel('chat')
-                     .listen('Example', (event) => {
-                     console.log(event)
-                     })
+                        Echo.private('users.{{ auth()->id() }}')
                     "
+{{--                    x-init="--}}
+{{--                    Echo.channel('chat')--}}
+{{--                     .listen('Example', (event) => {--}}
+{{--                     console.log(event)--}}
+{{--                     })--}}
+{{--                    "--}}
                 >
                     {{ __("You're logged in!") }}
                 </div>
