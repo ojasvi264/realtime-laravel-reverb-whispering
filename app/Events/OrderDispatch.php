@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -11,14 +12,14 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderDispatch
+class OrderDispatch implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(Public User $user)
+    public function __construct(public User $user, public Order $order)
     {
         //
     }
