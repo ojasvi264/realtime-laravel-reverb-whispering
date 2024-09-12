@@ -17,7 +17,7 @@ class Example implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-//    public string $queue = 'chat';
+    /*public string $queue = 'chat';*/
 
     public function broadcastQueue(): string{
         return 'chat';
@@ -40,7 +40,7 @@ class Example implements ShouldBroadcast
             ],
             'message' => [
             'id' => $this->message->id,
-        ]
+            ]
         ];
     }
 
