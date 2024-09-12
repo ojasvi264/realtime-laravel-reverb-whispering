@@ -6,13 +6,15 @@ use App\Events\Example;
 use App\Models\User;
 use App\Models\Message;
 use App\Events\Chat\ExampleTwo;
+use App\Events\OrderDispatch;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/broadcast', function () {
-    broadcast(new Example(User::find(1), Message::find(1)));
+//    broadcast(new Example(User::find(1), Message::find(1)));
+    broadcast(new OrderDispatch(User::find(1)));
 //    broadcast(new ExampleTwo());
 });
 
