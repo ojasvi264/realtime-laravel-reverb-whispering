@@ -10,20 +10,29 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div
                     class="p-6 text-gray-900 dark:text-gray-100"
+                    x-data="{
+                        dispatch: false,
+                        order: null,
+                    }"
                     x-init="
                         Echo.private('users.{{ auth()->id() }}')
                         .listen('OrderDispatch', (event) => {
-                            console.log(event)
-                        })
-                    "
+                            order = event.order
+                            dispatch = true
+
 {{--                    x-init="--}}
 {{--                    Echo.channel('chat')--}}
 {{--                     .listen('Example', (event) => {--}}
 {{--                     console.log(event)--}}
-{{--                     })--}}
-{{--                    "--}}
+                     })
+                    "
                 >
-                    {{ __("You're logged in!") }}
+                    <template x-if="dispatch">
+                        <div>
+                            Order (#<span x-text="order.id"></span>) has been dispatched.
+                        </div>
+                    </template>
+
                 </div>
             </div>
         </div>
