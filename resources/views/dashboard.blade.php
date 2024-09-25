@@ -12,6 +12,9 @@
                     class="p-6 text-gray-900 dark:text-gray-100"
                     x-init="
                         Echo.private('users.{{ auth()->id() }}')
+                        .listen('OrderDispatch', (event) => {
+                            console.log(event)
+                        })
                     "
 {{--                    x-init="--}}
 {{--                    Echo.channel('chat')--}}
